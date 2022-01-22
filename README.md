@@ -16,8 +16,6 @@
   * List containers with docker ps
   * Print output of app with docker logs
   * Call app using curl
-* Docker Compose file
-  * Create and start containers with docker compose up
 * Push your project to a GitHub repository
   * Initialize Git
   * Create a new blank repository
@@ -188,25 +186,40 @@ docker logs <container id>
 curl -i localhost:49160
 ```
 
-## Docker Compose file
+## Flightcontrol Config
 
-[Compose](https://docs.docker.com/compose/) is a tool for defining and running multi-container Docker applications. After configuring your application’s services with a YAML file, you can create and start all your services with a single command. Define the services that make up your app in `docker-compose.yml` so they can be run together in an isolated environment.
+Flightcontrol contains its own infrastructure as code specification that is used in a `flightcontrol.json` file. Documentation is currently in progress.
 
-```yaml
-version: "3.9"
-services:
-  web:
-    build: .
-    ports:
-      - "49160:8080"
-```
-
-### Create and start containers with docker compose up
-
-The `docker compose up` command aggregates the output of each container. It builds, (re)creates, starts, and attaches to containers for a service.
-
-```bash
-docker compose up
+```json
+{
+  "environments": [
+    {
+      "id": "production",
+      "name": "Production",
+      "region": "us-west-2",
+      "source": {
+        "branch": "main"
+      },
+      "services": [
+        {
+          "id": "my-webapp",
+          "name": "my-webapp",
+          "type": "fargate",
+          "cpu": 0.5,
+          "memory": 1024,
+          "minInstances": 1,
+          "maxInstances": 1,
+          "buildCommand": "npm i",
+          "startCommand": "node index.js",
+          "envVariables": {
+            "APP_ENV": "production"
+          },
+          "port": 8080
+        }
+      ]
+    }
+  ]
+}
 ```
 
 ## Push your project to a GitHub repository
