@@ -2,28 +2,7 @@
 
 [Docker](https://www.docker.com/) is a set of tools that use OS-level virtualization to deliver software in isolated packages called containers. Containers bundle their own software, libraries and configuration files. They communicate with each other through well-defined channels and use fewer resources than virtual machines.
 
-## Outline
-
-* Node project with an Express server
-  * Run server
-* Container image
-  * Dockerfile
-  * dockerignore
-  * Build project with docker build
-  * List Docker images with docker images
-* Run the image
-  * Run Docker container with docker run
-  * List containers with docker ps
-  * Print output of app with docker logs
-  * Call app using curl
-* Push your project to a GitHub repository
-  * Initialize Git
-  * Create a new blank repository
-* Publish to GitHub Container Registry
-  * Login to ghcr with docker login
-  * Tag image with docker tag
-  * Push to registry with docker push
-  * Pull your image with docker pull
+[Flightcontrol](https://flightcontrol.dev/) is a fullstack deployment platform that runs on your AWS account and automatically configures and spins up a Fargate container.
 
 ## Node project with an Express server
 
@@ -258,45 +237,3 @@ If you created a repository from the GitHub website instead of the CLI then you 
 git remote add origin https://github.com/ajcwebdev/ajcwebdev-docker.git
 git push -u origin main
 ```
-
-## Publish to GitHub Container Registry
-
-[GitHub Packages](https://docs.github.com/en/packages/learn-github-packages/introduction-to-github-packages) is a platform for hosting and managing packages that combines your source code and packages in one place including containers and other dependencies. You can integrate GitHub Packages with GitHub APIs, GitHub Actions, and webhooks to create an end-to-end DevOps workflow that includes your code, CI, and deployment solutions.
-
-GitHub Packages offers different package registries for commonly used package managers, such as npm, RubyGems, Maven, Gradle, and Docker. GitHub's [Container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry) is optimized for containers and supports Docker and OCI images.
-
-### Login to ghcr with docker login
-
-To login, create a [PAT (personal access token)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the ability to read, write, and delete packages and include it instead of `xxxx`.
-
-```bash
-export CR_PAT=xxxx
-```
-
-Login with your own username in place of `ajcwebdev`.
-
-```bash
-echo $CR_PAT | docker login ghcr.io -u ajcwebdev --password-stdin
-```
-
-### Tag image with docker tag
-
-```bash
-docker tag ajcwebdev-docker ghcr.io/ajcwebdev/ajcwebdev-docker
-```
-
-### Push to registry with docker push
-
-```bash
-docker push ghcr.io/ajcwebdev/ajcwebdev-docker:latest
-```
-
-### Pull your image with docker pull
-
-To test that our project has a docker image published to a public registry, pull it from your local development environment.
-
-```bash
-docker pull ghcr.io/ajcwebdev/ajcwebdev-docker
-```
-
-You can view this published container [on my GitHub](https://github.com/users/ajcwebdev/packages/container/package/ajcwebdev-docker).
