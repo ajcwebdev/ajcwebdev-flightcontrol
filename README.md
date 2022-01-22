@@ -4,6 +4,25 @@
 
 [Flightcontrol](https://flightcontrol.dev/) is a fullstack deployment platform that runs on your AWS account and automatically configures and spins up a Fargate container.
 
+## Outline
+
+* [Node project with an Express server](#node-project-with-an-express-server)
+  * [Run server](#run-server)
+* [Container image](#container-image)
+  * [Dockerfile](#dockerfile)
+  * [dockerignore](#dockerignore)
+  * [Build project with docker build](#build-project-with-docker-build)
+  * [List Docker images with docker images](#list-docker-images-with-docker-images)
+* [Run the image](#run-the-image)
+  * [Run Docker container with docker run](#run-docker-container-with-docker-run)
+  * [List containers with docker ps](#list-containers-with-docker-ps)
+  * [Print output of app with docker logs](#print-output-of-app-with-docker-logs)
+  * [Call app using curl](#call-app-using-curl)
+* [Flightcontrol Config](#flightcontrol-config)
+* [Push your project to a GitHub repository](#push-your-project-to-a-github-repository)
+  * [Initialize Git](#initialize-git)
+  * [Create a new blank repository](#create-a-new-blank-repository)
+
 ## Node project with an Express server
 
 We have a boilerplate Node application with Express that returns an HTML fragment.
