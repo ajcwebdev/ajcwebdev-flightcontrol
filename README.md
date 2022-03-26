@@ -2,7 +2,7 @@
 
 ## Flightcontrol Config
 
-Flightcontrol contains its own infrastructure as code specification that is used in a `flightcontrol.json` file. Documentation is currently in progress.
+Flightcontrol contains its own infrastructure as code specification that is used in a `flightcontrol.json` file.
 
 ```json
 {
